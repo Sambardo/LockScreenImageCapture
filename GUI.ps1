@@ -2,7 +2,7 @@
 Add-Type -AssemblyName PresentationCore,PresentationFramework
 
 #Cleanup XAML options
-$XAML= [XML](Get-Content -Path "$PSScriptRoot\MainWindow.xaml" -Raw)
+$XAML= [XML](Get-Content -Path "$PSScriptRoot\GUI.xaml" -Raw)
 $XAML.Window.RemoveAttribute('x:Class')
 $XAML.Window.RemoveAttribute('xmlns:local')
 $XAML.Window.RemoveAttribute('xmlns:d')
@@ -25,8 +25,10 @@ $namedNodes | ForEach-Object -Process {$GUI.Add($_.Name, $Rawform.FindName($_.Na
 
 #region button code
 $ButtonCode = {
-    &"$PSScriptRoot\Get-LockScreenImage.ps1" -SavePath "$PSScriptRoot\Image.jpg"
-    $GUI["ImageBox"].Source = "$PSScriptRoot\Image.jpg" 
+    if($GUI["InputBox"].text){$name = $GUI["InputBox"].text}
+    else{$name = "Image"}
+    &"$PSScriptRoot\Get-LockScreenImage.ps1" -SavePath "$PSScriptRoot\$Name.jpg"
+    $GUI["ImageBox"].Source = "$PSScriptRoot\$Name.jpg" 
 }
 $GUI["FetchButton"].add_Click($ButtonCode)
 
