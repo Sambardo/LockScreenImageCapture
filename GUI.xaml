@@ -11,7 +11,7 @@
             <RowDefinition Height="296*"/>
             <RowDefinition Height="65*"/>
             <RowDefinition Height="59*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions> 
         <Button x:Name="FetchButton" Content="Save Image" Margin="0" Grid.Row="2" MinWidth="200" MinHeight="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Image x:Name="ImageBox" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="0" MinWidth="0"/>
         <TextBox x:Name="InputBox" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="40" MinWidth="195"/>
